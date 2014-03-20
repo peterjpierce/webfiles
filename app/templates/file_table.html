@@ -1,0 +1,10 @@
+<table class="table-base">
+
+{% for entry in entries %}
+<tr class="linked" onClick="location.href='{{ url_for('download', fp=entry.basename) }}'">
+<td>{{ entry.basename }}</td>
+<td>{{ entry.pathtype }}</td>
+</tr>
+{% endfor %}
+
+</table>

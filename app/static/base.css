@@ -1,0 +1,261 @@
+/**
+ *** Palette URL: http://colorschemedesigner.com/#3-b1TjjrrLVP7
+ *** Color Space: RGB (Web Safe Colors); RGB color space reduced to 216 web safe color set
+ *** Primary Color:
+ *  var. 1 = #333399 = rgb(51,51,153)
+ *  var. 2 = #333366 = rgb(51,51,102)
+ *  var. 3 = #000033 = rgb(0,0,51)
+ *  var. 4 = #9999FF = rgb(153,153,255)
+ *  var. 5 = #CCCCFF = rgb(204,204,255)
+ *** Secondary Color A:
+ *  var. 1 = #CCCC66 = rgb(204,204,102)
+ *  var. 2 = #999966 = rgb(153,153,102)
+ *  var. 3 = #666600 = rgb(102,102,0)
+ *  var. 4 = #FFFF99 = rgb(255,255,153)
+ *  var. 5 = #FFFFCC = rgb(255,255,204)
+ *** Secondary Color B:
+ *  var. 1 = #CC9966 = rgb(204,153,102)
+ *  var. 2 = #996666 = rgb(153,102,102)
+ *  var. 3 = #663300 = rgb(102,51,0)
+ *  var. 4 = #FFCC99 = rgb(255,204,153)
+ *  var. 5 = #FFFFCC = rgb(255,255,204)
+ */
+
+body {
+  background-color: #FFFFFF;
+}
+
+h1, h2, h3, h4, h5 {
+  color: #000033;
+}
+
+strong {
+  color: #663300;
+}
+
+.error {
+  color: red;
+}
+
+a.bold {
+  color: #000033;
+}
+
+.table-base {
+  background: #FFFFFF;
+  color: black;
+}
+
+.table-base th {
+  background: #CCCCff;
+  color: black;
+}
+
+.table-base a {
+  color: #000033;
+}
+
+td.shaded {
+  background: #EEEEEE;
+}
+
+td.lightly-shaded {
+  background: #CCCCFF;
+}
+
+
+#port-bar li {
+  background: #DDDDDD;
+}
+
+#port-bar li:hover {
+  border-top-color: #330033;
+}
+
+li#selected {
+  background: #FFFFFF;
+  border-top-color: #008800;
+}
+
+#port-bar ul li a {
+  color: #000033;
+}
+
+#top-bar {
+  background: #333366;
+}
+
+.banner {
+  color: #FFFFFF;
+}
+
+.banner ul li a {
+  color: #FFFFFF;
+}
+
+.banner ul li a:hover {
+  background: #336699;
+}
+
+/* **** end of colors **** */
+
+body {
+  font-family: verdana, helvetica, sans-serif;
+  font-size: 14px;
+}
+p.table-note {
+  margin: 0 0 1em 2em;
+  font-style: italic;
+  font-size: 0.9em;
+}
+
+p.pre-list {
+  margin-bottom: 0.1em;
+}
+
+tr.linked {
+  cursor: pointer;
+}
+
+ul {
+  margin-top: 0;
+}
+
+a.bold {
+  text-decoration: none;
+  font-weight: 700;
+}
+
+
+h1.tight, h2.tight, h3.tight, h4.tight, h5.tight {
+  margin-top: 1em;
+  margin-bottom: 0.2em;
+}
+
+/* table-base */
+
+.table-base {
+  margin: 2em;
+  border-collapse: collapse;
+  text-align: center;
+}
+
+.table-base tr {
+  border-top: 1px solid #000;
+  border-bottom: 1px solid #000;
+}
+
+.table-base td, .table-base th {
+  border-left: 1px solid #999;
+  border-right: 1px solid #999;
+  padding: 0.4em;
+}
+
+.table-base a {
+  text-decoration: none;
+  font-weight: 700;
+}
+
+/* tabular data */
+
+.data {
+  font-size: 0.75em;
+  margin: 0em;
+}
+
+.data th {
+  font-weight: 100;
+}
+
+.data td, .data th {
+  border-left: 1px solid #999;
+  border-right: 1px solid #999;
+  padding: 0.4em 0.2em 0.4em 0.2em;
+}
+
+ul {
+  list-style-type: circle;
+}
+
+tr.linked:hover {
+  background: #BBDDBB;
+}
+
+/* banner */
+
+#masthead {
+  height: 30px;
+  clear: both;
+  overflow: hidden;
+  vertical-align: middle;
+}
+
+img.top-logo {
+  height: 28px;
+}
+
+.mast-right {
+  float: right;
+  min-width: 40px;
+  margin: 5px 0 0 1em;
+}
+
+#top-bar {
+  clear: both;
+  overflow: hidden;
+  min-height: 2.65em;
+}
+
+#banner-left {
+  float: left;
+}
+
+.banner ul {
+  list-style-type: none;
+  font-size: 1.2em;
+  padding-top: 0.4em;
+  padding-bottom: 0.4em;
+  margin-bottom: 0em;
+}
+
+.banner ul li {
+  display: inline;
+}
+
+.banner ul li a {
+  text-decoration: none;
+  padding: 0.6em 1em 0.6em 1em;
+}
+
+#search {
+  float: right;
+  margin-top: 0.4em;
+}
+
+#log {
+  float: right;
+  font-size: 0.7em;
+  padding: 0.5em 0 0.5em 0;
+}
+
+#log ul {
+  -webkit-padding-start: 1em;
+}
+
+/* main */
+
+#main {
+  position: relative;
+  clear: both;
+  min-height: 700px;
+}
+
+#main .not-wide {
+  margin-left: 4em;
+  margin-right: 4em;
+}
+
+#main .wide {
+  margin-left: 1em;
+  margin-right: 1em;
+}
