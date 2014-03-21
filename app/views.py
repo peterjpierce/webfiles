@@ -2,6 +2,7 @@ import flask
 
 from app import app
 import app.controller as controller
+from app.filters import *
 
 
 def render_template(template_name, **kwargs):

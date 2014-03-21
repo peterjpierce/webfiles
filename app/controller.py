@@ -2,8 +2,7 @@ import re
 
 import flask
 
-from app.directory import Directory
-from app.records import FileRecord
+from app.filesystem import Directory, FileRecord
 from app.errors import InvalidRequestError
 
 import config
