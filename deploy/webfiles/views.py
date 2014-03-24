@@ -1,8 +1,8 @@
 import flask
 
-from app import app
-import app.controller as controller
-from app.filters import *
+from webfiles import app
+import webfiles.controller as controller
+from webfiles.filters import *
 
 
 def render_template(template_name, **kwargs):

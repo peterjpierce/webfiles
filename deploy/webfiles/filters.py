@@ -1,4 +1,4 @@
-from app import app
+from webfiles import app
 
 DATE_FORMAT = '%Y-%m-%d'
 

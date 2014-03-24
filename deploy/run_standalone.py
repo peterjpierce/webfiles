@@ -6,8 +6,8 @@
 
 #import config
 
-from app import app
-from app import views
+from webfiles import app
+from webfiles import views
 
 #logging.config.dictConfig(config.logging_definition(config.LOGFILE['webapp']))
 

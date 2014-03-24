@@ -4,9 +4,9 @@ import os
 import os.path
 import re
 
-import app.errors as errors
-import app.mappings as mappings
-from app.shared import Record
+import webfiles.errors as errors
+import webfiles.mappings as mappings
+from webfiles.shared import Record
 
 
 class FileRecord(Record):
@@ -96,11 +96,11 @@ class Directory():
         of ('basename', 'display_name', 'size', 'data_date').
         """
         dr = os.path.join(self.basedir, subdir)
-        field_of = operator.attrgetter(sortby)
+        field_from = operator.attrgetter(sortby)
 
         try:
             rawlist = [FileRecord(dr, e) for e in os.listdir(dr)]
-            return sorted(rawlist, key = lambda x: field_of(x), reverse=reverse)
+            return sorted(rawlist, key = lambda x: field_from(x), reverse=reverse)
         except Exception as err:
             raise
 
