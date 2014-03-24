@@ -1,8 +1,14 @@
+import os.path
+
 import flask
 
 from webfiles import app
 import webfiles.controller as controller
 from webfiles.filters import *
+
+IGNORE = [
+    'favicon.ico',
+    ]
 
 
 def render_template(template_name, **kwargs):
@@ -16,6 +22,8 @@ def render_template(template_name, **kwargs):
 @app.route('/<path:subdir>')
 def index(subdir=''):
     """List files in settings.config.FILE_ROOT or an optional subdirectory."""
+    if subdir in IGNORE:
+        return ''
     entries = controller.listdir(subdir)
     return render_template('filelist.html', entries=entries)
 
@@ -33,4 +41,4 @@ def download():
         path_tail = flask.request.args.get('fp')
         return controller.stream_file(path_tail)
     except Exception as err:
-        return 'invalid request: %s' % flask.request.url
+        return 'invalid request: %s' % (flask.request.url)

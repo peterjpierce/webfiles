@@ -6,7 +6,7 @@
   <th>Size</th>
 </tr>
 {% for entry in entries %}
-<tr class="linked" onClick="location.href='{{ url_for('download', fp=entry.basename) }}'">
+<tr class="linked" onClick="location.href='{{ url_for('download', fp=entry.url_resource)|safe }}'">
 <td>{{ entry.display_name }}</td>
 <td>{{ entry.data_date|formatted_date }}</td>
 <td>{{ entry.revision }}</td>

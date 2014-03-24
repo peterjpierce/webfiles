@@ -5,13 +5,13 @@
 
 WSGIDaemonProcess wfdev processes=3 python-path=/home/ppierce/git/webfiles/deploy:/home/ppierce/pyenv/wfil/lib/python3.4/site-packages
 
-Alias /webfiles/static/ /home/ppierce/git/webfiles/deploy/webfiles/static/
+Alias /file_depot/static/ /home/ppierce/git/webfiles/deploy/webfiles/static/
 <Directory /home/ppierce/git/webfiles/deploy/webfiles/static/>
   Order allow,deny
   Allow from all
 </Directory>
 
-WSGIScriptAlias /webfiles /home/ppierce/git/webfiles/deploy/settings/wsgi.py
+WSGIScriptAlias /file_depot /home/ppierce/git/webfiles/deploy/settings/wsgi.py
 <Directory /home/ppierce/git/webfiles/deploy/settings>
   WSGIProcessGroup wfdev
   WSGIApplicationGroup %{GLOBAL}

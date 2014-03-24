@@ -12,9 +12,15 @@ from webfiles.shared import Record
 class FileRecord(Record):
     """Information about a file."""
 
-    def __init__(self, directory_path, filename):
-        """Leverage setter property below to also meta info."""
-        full = os.path.abspath(os.path.join(directory_path, filename))
+    def __init__(self, filename, directory, urldir=''):
+        """Leverage setter property below to also meta info.
+
+        Optional arg urldir is the URL path leading up to the filename that
+        browser clients should call, without any application root that may be
+        added by WSGI.
+        """
+        self.url_resource = os.path.join(urldir, filename)
+        full = os.path.abspath(os.path.join(directory, filename))
         try:
             self.fullpath = full
         except Exception as err:
@@ -95,11 +101,17 @@ class Directory():
         Arg sortby may be any attribute of FileRecord, but normally one
         of ('basename', 'display_name', 'size', 'data_date').
         """
+        # disallow walking up the directory tree
+        if '..' in subdir:
+            return []
+        else:
+            urldir = subdir
+
         dr = os.path.join(self.basedir, subdir)
         field_from = operator.attrgetter(sortby)
 
         try:
-            rawlist = [FileRecord(dr, e) for e in os.listdir(dr)]
+            rawlist = [FileRecord(e, dr, urldir) for e in os.listdir(dr)]
             return sorted(rawlist, key = lambda x: field_from(x), reverse=reverse)
         except Exception as err:
             raise
