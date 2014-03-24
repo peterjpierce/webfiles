@@ -1,0 +1,22 @@
+##
+# /webfiles and /usr/local/nrtc/wsgi_apps/webfiles
+# Use the Apache Include directive to integrate this into the virtual host config file
+#
+
+WSGIDaemonProcess wfdev processes=3 python-path=/home/ppierce/git/webfiles/deploy:/home/ppierce/pyenv/wfil/lib/python3.4/site-packages
+
+Alias /webfiles/static/ /home/ppierce/git/webfiles/deploy/webfiles/static/
+<Directory /home/ppierce/git/webfiles/deploy/webfiles/static/>
+  Order allow,deny
+  Allow from all
+</Directory>
+
+WSGIScriptAlias /webfiles /home/ppierce/git/webfiles/deploy/settings/wsgi.py
+<Directory /home/ppierce/git/webfiles/deploy/settings>
+  WSGIProcessGroup wfdev
+  WSGIApplicationGroup %{GLOBAL}
+  <Files wsgi.py>
+    Order deny,allow
+    Allow from all
+  </Files>
+</Directory>

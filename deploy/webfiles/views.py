@@ -15,7 +15,7 @@ def render_template(template_name, **kwargs):
 @app.route('/', defaults={'subdir': ''})
 @app.route('/<path:subdir>')
 def index(subdir=''):
-    """List files in config.FILE_ROOT or an optional subdirectory."""
+    """List files in settings.config.FILE_ROOT or an optional subdirectory."""
     entries = controller.listdir(subdir)
     return render_template('filelist.html', entries=entries)
 
@@ -25,7 +25,7 @@ def download():
     """Stream the given file if authenticated and permitted.
 
     The request args must include ?fp=<path_tail> which is the path to a
-    file relative to config.FILE_ROOT.
+    file relative to settings.config.FILE_ROOT.
 
     The controller takes care of trapping user input problems.
     """
