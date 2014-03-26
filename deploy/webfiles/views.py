@@ -1,6 +1,6 @@
 import os.path
 
-import flask
+from flask import request, session, render_template
 
 from webfiles import app
 import webfiles.controller as controller
@@ -11,11 +11,11 @@ IGNORE = [
     ]
 
 
-def render_template(template_name, **kwargs):
+def render(template_name, **kwargs):
     """Injects calls to flask.render_template() with embellishments."""
     injections = {}
     kwargs.update(injections)
-    return flask.render_template(template_name, **kwargs)
+    return render_template(template_name, **kwargs)
 
 
 @app.route('/', defaults={'subdir': ''})
@@ -24,8 +24,11 @@ def index(subdir=''):
     """List files in settings.config.FILE_ROOT or an optional subdirectory."""
     if subdir in IGNORE:
         return ''
+    # TODO implement authentication
+    session['catalog'] = 'group1'
+
     entries = controller.listdir(subdir)
-    return render_template('filelist.html', entries=entries)
+    return render('filelist.html', entries=entries)
 
 
 @app.route('/download')
@@ -38,7 +41,7 @@ def download():
     The controller takes care of trapping user input problems.
     """
     try:
-        path_tail = flask.request.args.get('fp')
+        path_tail = request.args.get('fp')
         return controller.stream_file(path_tail)
     except Exception as err:
-        return 'invalid request: %s' % (flask.request.url)
+        return 'invalid request: %s' % (request.url)

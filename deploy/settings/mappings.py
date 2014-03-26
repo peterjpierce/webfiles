@@ -7,7 +7,7 @@ PATTERNS = [
         },
         {
             'regex': '^neonova_viasat_accounts_(20\d{6})\.(\d+)\..*',
-            'display_name': 'NeoNova ViaSat Accounts',
+            'display_name': 'Active Accounts',
             'strptime_pattern': '%Y%m%d',
             'date_regex_group': 1,
             'revision_group': 2,

@@ -4,8 +4,8 @@ import os
 import os.path
 import re
 
+import settings.mappings as mappings
 import webfiles.errors as errors
-import webfiles.mappings as mappings
 from webfiles.shared import Record
 
 
