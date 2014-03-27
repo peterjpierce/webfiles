@@ -3,7 +3,7 @@ import os.path
 from flask import request, session, render_template
 
 from webfiles import app
-import webfiles.controller as controller
+import webfiles.controllers as controllers
 from webfiles.filters import *
 
 IGNORE = [
@@ -27,7 +27,7 @@ def index(subdir=''):
     # TODO implement authentication
     session['catalog'] = 'group1'
 
-    entries = controller.listdir(subdir)
+    entries = controllers.listdir(subdir)
     return render('filelist.html', entries=entries)
 
 
@@ -42,6 +42,6 @@ def download():
     """
     try:
         path_tail = request.args.get('fp')
-        return controller.stream_file(path_tail)
+        return controllers.stream_file(path_tail)
     except Exception as err:
         return 'invalid request: %s' % (request.url)

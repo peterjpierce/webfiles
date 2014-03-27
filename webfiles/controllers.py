@@ -3,7 +3,7 @@ import re
 
 from flask import session, send_file
 
-from webfiles.filesystem import Directory
+from webfiles.util.filesystem import Directory
 from webfiles.errors import InvalidRequestError
 
 import settings.config as config

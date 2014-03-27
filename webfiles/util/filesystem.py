@@ -6,7 +6,7 @@ import re
 
 import settings.mappings as mappings
 import webfiles.errors as errors
-from webfiles.shared import Record
+from webfiles.util.shared import Record
 
 
 class FileRecord(Record):
