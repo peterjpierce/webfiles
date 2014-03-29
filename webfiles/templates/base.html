@@ -17,7 +17,13 @@
 
 <body>
 
-    {% block content %}{% endblock %}
+  {% if 'username' in session %}
+  <div>
+  <a href="{{ url_for('logout') }}">Log out</a>
+  </div>
+  {% endif %}
+
+  {% block content %}{% endblock %}
 
 </body>
 

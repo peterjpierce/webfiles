@@ -11,3 +11,8 @@ class PathError(BaseError):
 class InvalidRequestError(BaseError):
     """Raised when a malicious request or erroneous file path received."""
     pass
+
+
+class InvalidSessionError(BaseError):
+    """Raised when a request is attempted but the session is not authenticated."""
+    pass

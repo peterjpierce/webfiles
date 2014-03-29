@@ -1,16 +1,18 @@
 <table class="table-base data">
+
 <tr>
   <th>File</th>
   <th>Data Date</th>
   <th>Revision</th>
   <th>Size</th>
 </tr>
+
 {% for entry in entries %}
 <tr class="linked" onClick="location.href='{{ url_for('download', fp=entry.url_resource)|safe }}'">
-<td>{{ entry.display_name }}</td>
-<td>{{ entry.data_date|formatted_date }}</td>
-<td>{{ entry.revision }}</td>
-<td>{{ entry.size|filesizeformat }}</td>
+  <td>{{ entry.display_name }}</td>
+  <td>{{ entry.data_date|formatted_date }}</td>
+  <td>{{ entry.revision }}</td>
+  <td>{{ entry.size|filesizeformat }}</td>
 </tr>
 {% endfor %}
 

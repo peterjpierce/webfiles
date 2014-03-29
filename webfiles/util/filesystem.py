@@ -33,16 +33,20 @@ class FileRecord(Record):
     @fullpath.setter
     def fullpath(self, arg):
         """Set path elements and other metadata like size and type."""
-        self.dirname = os.path.dirname(arg)
-        self.basename = os.path.basename(arg)
+        self._load_attributes(arg)
+
+    def _load_attributes(self, fullpath):
+        """Deduce basic attributes, and extras if this is a file."""
+        self.dirname = os.path.dirname(fullpath)
+        self.basename = os.path.basename(fullpath)
         try:
-            self.size = os.path.getsize(arg)
+            self.size = os.path.getsize(fullpath)
             self.modtime = datetime.datetime.fromtimestamp(
-                    os.path.getmtime(arg))
-            if os.path.isfile(arg):
+                    os.path.getmtime(fullpath))
+            if os.path.isfile(fullpath):
                 self.pathtype = 'file'
                 self._load_extras()
-            elif os.path.isdir(arg):
+            elif os.path.isdir(fullpath):
                 self.pathtype = 'directory'
             else:
                 self.pathtype = None
