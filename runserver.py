@@ -1,6 +1,12 @@
 #!/usr/bin/env python
 
+import logging
+import logging.config
+
+import settings.config as cfg
 from webfiles import app
+
+logging.config.dictConfig(cfg.LOGGING_CONFIG)
 
 
 def main():

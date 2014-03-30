@@ -79,7 +79,6 @@ class FileRecord(Record):
                 except (KeyError, IndexError, ValueError) as err:
                     pass
 
-
                 break
 
     def __repr__(self):

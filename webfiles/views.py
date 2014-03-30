@@ -1,3 +1,5 @@
+import logging
+
 from flask import request, render_template, redirect, url_for, flash
 
 from webfiles import app
@@ -9,6 +11,8 @@ from webfiles.util.decorators import require_logged_in
 IGNORE = [
     'favicon.ico',
     ]
+
+log = logging.getLogger(__name__)
 
 
 def render(template_name, **kwargs):

@@ -1,0 +1,11 @@
+#!/bin/sh
+
+basedir=$(cd $(dirname $0)/..; pwd)
+
+subdirs="
+  var/log
+"
+
+for subdir in $subdirs; do
+  mkdir -p -m 755 $basedir/$subdir
+done
