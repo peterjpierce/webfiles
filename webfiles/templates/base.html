@@ -17,11 +17,25 @@
 
 <body>
 
-  {% if 'username' in session %}
+  <! -- flash zone -->
+  {% block flashed_messages %}
+  {% with messages = get_flashed_messages() %}
+    {% if messages %}
+      <div class="error">
+        {% for msg in messages %}
+          {{ msg }}<br>
+        {% endfor %}
+      </div>
+    {% endif %}
+  {% endwith %}
+  {% endblock %}
+
   <div>
-  <a href="{{ url_for('logout') }}">Log out</a>
-  </div>
+  {% if 'username' in session %}
+  <a href="{{ url_for('logout') }}">Log out</a> -
   {% endif %}
+  <a href="{{ url_for('index') }}">Home</a>
+  </div>
 
   {% block content %}{% endblock %}
 

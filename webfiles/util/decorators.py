@@ -1,7 +1,7 @@
 from datetime import datetime as dtime
 from functools import wraps
 
-from flask import session, url_for, redirect
+from flask import session, url_for, redirect, flash
 
 import webfiles.errors as errors
 import webfiles.util.auth as auth
@@ -44,5 +44,6 @@ def require_logged_in(anyfunc):
             pass
         # bad session if we fell through
         auth.logout()
+        flash('Login session is not valid or has expired')
         return redirect(url_for('login'))
     return wrapped

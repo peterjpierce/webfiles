@@ -1,4 +1,4 @@
-from flask import request, render_template, redirect, url_for
+from flask import request, render_template, redirect, url_for, flash
 
 from webfiles import app
 import webfiles.controllers as controllers
@@ -26,7 +26,11 @@ def login():
         logform = LoginForm(request.form)
         if logform.validate() and controllers.authenticate():
             return redirect(url_for('index'))
-    # this happens if error in POST or any other request
+
+    # falls through to here if GET or error in POST
+    for fld in logform.errors:
+        for err in logform.errors[fld]:
+            flash(err)
     return render('login.html', form=logform)
 
 
@@ -43,11 +47,15 @@ def index(subdir=''):
     """List files in settings.config.FILE_ROOT or an optional subdirectory."""
     if subdir in IGNORE:
         return ''
-    entries = controllers.listdir(subdir)
-    return render('filelist.html', entries=entries)
+    try:
+        entries = controllers.listdir(subdir)
+        return render('filelist.html', entries=entries)
+    except Exception as err:
+        flash('invalid request: %s' % subdir)
+        return render('filelist.html')
 
 
-@app.route('/download/')
+@app.route('/download')
 @require_logged_in
 def download():
     """Stream the given file if authenticated and permitted.
@@ -61,4 +69,5 @@ def download():
         path_tail = request.args.get('fp')
         return controllers.stream_file(path_tail)
     except Exception as err:
-        return 'invalid request: %s' % (request.url)
+        flash('Invalid download requested: %s' % path_tail)
+        return index()
