@@ -7,5 +7,6 @@ subdirs="
 "
 
 for subdir in $subdirs; do
-  mkdir -p -m 755 $basedir/$subdir
+  mkdir -p $basedir/$subdir
+  chmod 777 $basedir/$subdir
 done

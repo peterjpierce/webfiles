@@ -3,16 +3,16 @@
 # Use the Apache Include directive to integrate this into the virtual host config file
 #
 
-WSGIDaemonProcess wfdev processes=3 python-path=/home/ppierce/git/webfiles/deploy:/home/ppierce/pyenv/wfil/lib/python3.4/site-packages
+WSGIDaemonProcess wfdev processes=3 python-path=/home/ppierce/git/webfiles:/home/ppierce/pyenv/wfil/lib/python3.4/site-packages
 
-Alias /file_depot/static/ /home/ppierce/git/webfiles/deploy/webfiles/static/
-<Directory /home/ppierce/git/webfiles/deploy/webfiles/static/>
+Alias /file_depot/static/ /home/ppierce/git/webfiles/webfiles/static/
+<Directory /home/ppierce/git/webfiles/webfiles/static/>
   Order allow,deny
   Allow from all
 </Directory>
 
-WSGIScriptAlias /file_depot /home/ppierce/git/webfiles/deploy/settings/wsgi.py
-<Directory /home/ppierce/git/webfiles/deploy/settings>
+WSGIScriptAlias /file_depot /home/ppierce/git/webfiles/settings/wsgi.py
+<Directory /home/ppierce/git/webfiles/settings>
   WSGIProcessGroup wfdev
   WSGIApplicationGroup %{GLOBAL}
   <Files wsgi.py>
