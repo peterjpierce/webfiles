@@ -1,0 +1,6 @@
+##
+# Use the Apache Include directive to integrate this daemon directive
+# *once per server instance*
+#
+
+WSGIDaemonProcess wfdev processes=3 python-path=/home/ppierce/git/webfiles:/home/ppierce/pyenv/wfil/lib/python3.4/site-packages
