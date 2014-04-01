@@ -9,7 +9,7 @@ CSRF_ENABLED = True
 
 BASEDIR = os.path.abspath('%s/..' % os.path.dirname(__file__))
 
-LOGFILE = '%s/var/log/wwebfile.log' % BASEDIR
+LOGFILE = '%s/var/log/webfile.log' % BASEDIR
 LOGGING_CONFIG = {
         'version': 1,
         'disable_existing_loggers': False,

@@ -30,12 +30,14 @@
   {% endwith %}
   {% endblock %}
 
+  {% if not suppress_nav %}
   <div>
-  {% if 'username' in session %}
-  <a href="{{ url_for('logout') }}">Log out</a> -
-  {% endif %}
-  <a href="{{ url_for('index') }}">Home</a>
+    <a class="bold" href="{{ url_for('index') }}">Home</a> -
+    {% if 'username' in session %}
+    <a class="bold" href="{{ url_for('logout') }}">Log out</a>
+    {% endif %}
   </div>
+  {% endif %}
 
   {% block content %}{% endblock %}
 
